@@ -1,0 +1,7 @@
+{
+  "name": "RecipeNest m_1",
+  "description": "An intelligent culinary assistant that generates personalized meal plans, recipes, and food visualizations based on your dietary preferences and available ingredients.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
