@@ -98,7 +98,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.get('*all', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
@@ -107,13 +107,6 @@ async function startServer() {
   // Wait, http-proxy-middleware automatically upgrades if we pass app.listen server.
   const server = app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
-  });
-  
-  // Actually, express app.listen returns an http.Server.
-  // The middleware intercepts upgrades if 'ws: true' is set. 
-  // However, often you need to attach upgrade manually depending on Express.
-  server.on('upgrade', (req, socket, head) => {
-    // Let http-proxy-middleware handle it? It handles it natively if used correctly!
   });
 }
 
